@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div style = "width :50%; margin: auto;">
+    <button type="button" class="btn btn-secondary btn-lg btn-block" > TO LIST </button>
+
+    {% if data %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id:</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.Title}}</td>
+        <td>{{item.Description}}</td>
+        <td>{{item.Status}}</td>
+        <td> 
+          <a href="{% url 'edit_list' id=item.id  %}" class='btn btn-primary btn-sm'>Edit</a>
+          <a href="{% url 'delete_list' id=item.id  %}"  class='btn btn-danger btn-sm'>Delete</a>
+          <a href="{% url 'edit_list' id=item.id  %}" class='btn btn-warning btn-sm'>Complete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h1>No data is avilable </h1>
+  {% endif %}
+</div>
+{% endblock %}

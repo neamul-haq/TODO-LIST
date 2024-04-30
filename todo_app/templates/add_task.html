@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div style = "width:50% ; margin:auto;" >
+  <button type="button" class="btn btn-secondary btn-lg btn-block"> TASK LIST </button>
+    <form method='post' >
+        {% csrf_token %}
+        {{form | crispy }}
+        <button class = "btn btn-primary" type = "submit"> Submit </button>
+    </form>
+</div>
+{% endblock %}
